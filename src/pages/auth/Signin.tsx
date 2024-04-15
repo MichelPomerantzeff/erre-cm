@@ -1,10 +1,11 @@
-import { login } from "../../apis/userLogin";
-import { useMutation } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Toaster } from "sonner";
+import { useMutation } from "@tanstack/react-query";
+import { login } from "../../apis/userLogin";
+import Spinner from "../../components/Spinner";
 
 export default function SignIn() {
   const logUserSchema = z.object({
@@ -84,7 +85,7 @@ export default function SignIn() {
             </a>
           </div>
           <button className="max-h-[48px] linear mt-2 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium transition duration-200 text-white hover:bg-brand-600 active:bg-brand-700">
-            {isPending ? "Loading" : "Signin"}
+            {isPending ? <Spinner /> : "Signin"}
           </button>
           <div className="mt-4">
             <span className=" text-sm font-medium">Not registered yet?</span>

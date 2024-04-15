@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { createUser } from "../../apis/createUser";
 import { Toaster } from "sonner";
+import Spinner from "../../components/Spinner";
 
 export default function Register() {
   const createUserSchema = z
@@ -138,7 +139,7 @@ export default function Register() {
             type="submit"
             className="max-h-[48px] linear mt-4 w-full rounded-xl bg-brand-500 py-[12px] text-base font-medium transition duration-200 text-white hover:bg-brand-600 active:bg-brand-700"
           >
-            {isPending ? "Loading" : "Register"}
+            {isPending ? <Spinner /> : "Register"}
           </button>
 
           <div className="mt-4">
